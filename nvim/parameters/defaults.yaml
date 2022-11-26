@@ -1,0 +1,18 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+#
+# Set default values.
+---
+values:
+  pkg:
+    name: nvim
+  rootgroup: root
+  config: '/etc/nvim'
+  service:
+    name: nvim
+  subcomponent:
+    config: '/etc/nvim-subcomponent-formula.conf'
+  # Just here for testing
+  added_in_defaults: defaults_value
+  winner: defaults
+...
