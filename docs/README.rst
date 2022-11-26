@@ -3,23 +3,7 @@
 nvim-formula
 ============
 
-|img_travis| |img_sr| |img_pc|
-
-.. |img_travis| image:: https://travis-ci.com/saltstack-formulas/nvim-formula.svg?branch=master
-   :alt: Travis CI Build Status
-   :scale: 100%
-   :target: https://travis-ci.com/saltstack-formulas/nvim-formula
-.. |img_sr| image:: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
-   :alt: Semantic Release
-   :scale: 100%
-   :target: https://github.com/semantic-release/semantic-release
-.. |img_pc| image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
-   :alt: pre-commit
-   :scale: 100%
-   :target: https://github.com/pre-commit/pre-commit
-
-A SaltStack formula that is empty. It has dummy content to help with a quick
-start on a new formula and it serves as a style guide.
+A SaltStack formula to install and configure Neovim.
 
 .. contents:: **Table of Contents**
    :depth: 1
@@ -93,63 +77,13 @@ This state will install the nvim package only.
 ``nvim.config``
 ^^^^^^^^^^^^^^^
 
-This state will configure the nvim service and has a dependency on ``nvim.install``
-via include list.
+This state will configure Neovim by creating the init.vim file.
 
-``nvim.service``
-^^^^^^^^^^^^^^^^
-
-This state will start the nvim service and has a dependency on ``nvim.config``
-via include list.
-
-``nvim.clean``
-^^^^^^^^^^^^^^
-
-*Meta-state (This is a state that includes other states)*.
-
-this state will undo everything performed in the ``nvim`` meta-state in reverse order, i.e.
-stops the service,
-removes the configuration file and
-then uninstalls the package.
-
-``nvim.service.clean``
-^^^^^^^^^^^^^^^^^^^^^^
-
-This state will stop the nvim service and disable it at boot time.
 
 ``nvim.config.clean``
 ^^^^^^^^^^^^^^^^^^^^^
 
-This state will remove the configuration of the nvim service and has a
-dependency on ``nvim.service.clean`` via include list.
-
-``nvim.package.clean``
-^^^^^^^^^^^^^^^^^^^^^^
-
-This state will remove the nvim package and has a depency on
-``nvim.config.clean`` via include list.
-
-``nvim.subcomponent``
-^^^^^^^^^^^^^^^^^^^^^
-
-*Meta-state (This is a state that includes other states)*.
-
-This state installs a subcomponent configuration file before
-configuring and starting the nvim service.
-
-``nvim.subcomponent.config``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This state will configure the nvim subcomponent and has a
-dependency on ``nvim.config`` via include list.
-
-``nvim.subcomponent.config.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This state will remove the configuration of the nvim subcomponent
-and reload the nvim service by a dependency on
-``nvim.service.running`` via include list and ``watch_in``
-requisite.
+This state will remove the configuration of the nvim service.
 
 Testing
 -------

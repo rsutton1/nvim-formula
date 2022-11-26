@@ -11,6 +11,7 @@
 {#- List of sources to lookup for parameters #}
 {#- Fallback to previously used grains plus minion `id` #}
 {%- set map_sources = [
+      "Y:G@kernel",
       "Y:G@osarch",
       "Y:G@os_family",
       "Y:G@os",
