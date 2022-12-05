@@ -10,7 +10,8 @@ nvim:
 
   pkg:
     name: neovim
-  config: /etc/template-formula.conf
+  vimplug:
+    user: {{ grains['username'] }}
 
   # tofs:
     # The files_switch key serves as a selector for alternative

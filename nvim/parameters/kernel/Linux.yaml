@@ -12,9 +12,9 @@
 # values: {}
 ---
 values:
+  pkg:
+    bashrc_path: /home/{{ grains['username'] }}/.bashrc
   install:
     github:
       suffix: linux64
-
-  config: /etc/nvim.d/custom-ubuntu.conf
 ...
