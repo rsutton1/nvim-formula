@@ -10,6 +10,10 @@ nvim:
 
   pkg:
     name: neovim
+  config:
+    target: /root/.config/nvim/
+  vimplug:
+    user: root
 
   # tofs:
     # The files_switch key serves as a selector for alternative

@@ -33,7 +33,9 @@ neovim_plugins_vimplug:
     - runas: {{ nvim.vimplug.user }}
     - require:
       - sls: {{ sls_package_install }}
+      {% if config_target %}
       - nvim-config-file-file-managed-init-vim
+      {% endif %}
 
 neovim_plugins_installed:
   cmd.run:
@@ -41,6 +43,8 @@ neovim_plugins_installed:
     - runas: {{ nvim.vimplug.user }}
     - require:
       - sls: {{ sls_package_install }}
-      - nvim-config-file-file-managed-init-vim
       - neovim_plugins_vimplug
+      {% if config_target %}
+      - nvim-config-file-file-managed-init-vim
+      {% endif %}
 {% endif %}

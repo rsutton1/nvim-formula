@@ -276,6 +276,33 @@ suites:
           '*':
             - nvim._mapdata
             - nvim
+      pillars:
+        top.sls:
+          base:
+            "*":
+              - default
     verifier:
       inspec_tests:
         - path: test/integration/default
+      controls:
+        - nvim.package.install
+  - name: vimplug
+    provisioner:
+      state_top:
+        base:
+          '*':
+            - nvim._mapdata
+            - nvim
+      pillars:
+        top.sls:
+          base:
+            "*":
+              - vimplug
+      dependencies:
+        - name: nvim
+          path: test/salt/files/vimplug
+    verifier:
+      inspec_tests:
+        - path: test/integration/default
+      controls:
+        - nvim.vimplug.sensible
