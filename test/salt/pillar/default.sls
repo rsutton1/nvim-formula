@@ -10,6 +10,7 @@ nvim:
 
   pkg:
     name: neovim
+    bashrc_path: /root/.bashrc
 
   # tofs:
     # The files_switch key serves as a selector for alternative
