@@ -17,7 +17,6 @@ include:
 nvim-config-file-file-managed-init-vim:
   file.recurse:
     - name: {{ config_target }}
-    - include_empty: True
     - makedirs: True
     - source: {{ files_switch(
                     ['nvim_config_dir']
