@@ -82,8 +82,8 @@ path with the pillar `nvim:pkg:bashrc_path`.
 This state configures neovim by:
 
 1. populating the config directory
-1. installs vim-pack
-1. runs the `:PlugInstall` command
+2. installs vim-pack
+3. runs the `:PlugInstall` command
 
 This state uses the
 (files_switch)[https://template-formula.readthedocs.io/en/latest/TOFS_pattern.html]
