@@ -86,7 +86,7 @@ This state configures neovim by:
 3. runs the ``:PlugInstall`` command
 
 This state uses the
-(files_switch)[https://template-formula.readthedocs.io/en/latest/TOFS_pattern.html]
+`files_switch <https://template-formula.readthedocs.io/en/latest/TOFS_pattern.html>`_
 macro with ID ``nvim_config_dir`` to source the config file directory. For
 instance, any files or directories in
 ``salt://nvim/files/default/nvim_config_dir/`` will be sourced.
