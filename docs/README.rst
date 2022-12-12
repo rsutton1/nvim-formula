@@ -73,8 +73,8 @@ starts the associated nvim service.
 ^^^^^^^^^^^^^^^^
 
 This state will install the nvim package. On Linux, it will also prepend its
-install directory to `$PATH` in your .bashrc file. You can set a custom bashrc
-path with the pillar `nvim:pkg:bashrc_path`.
+install directory to ``$PATH`` in your .bashrc file. You can set a custom bashrc
+path with the pillar ``nvim:pkg:bashrc_path``.
 
 ``nvim.config``
 ^^^^^^^^^^^^^^^
@@ -83,13 +83,13 @@ This state configures neovim by:
 
 1. populating the config directory
 2. installs vim-pack
-3. runs the `:PlugInstall` command
+3. runs the ``:PlugInstall`` command
 
 This state uses the
 (files_switch)[https://template-formula.readthedocs.io/en/latest/TOFS_pattern.html]
-macro with ID `nvim_config_dir` to source the config file directory. For
+macro with ID ``nvim_config_dir`` to source the config file directory. For
 instance, any files or directories in
-`salt://nvim/files/default/nvim_config_dir/` will be sourced.
+``salt://nvim/files/default/nvim_config_dir/`` will be sourced.
 
 ``nvim.config.clean``
 ^^^^^^^^^^^^^^^^^^^^^
