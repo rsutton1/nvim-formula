@@ -10,6 +10,7 @@ nvim:
 
   pkg:
     name: neovim
+    bashrc_path: /root/.bashrc
   config:
     target: /root/.config/nvim/
   vimplug:
