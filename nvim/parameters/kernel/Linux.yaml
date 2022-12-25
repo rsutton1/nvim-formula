@@ -11,12 +11,18 @@
 # you can remove this file or provide at least an empty dict, e.g.
 # values: {}
 ---
+{% set user = salt.environ.get("SUDO_USER", grains['username']) -%}
+{% if user == 'root' -%}
+  {% set bashrc_dir = '/root' -%}
+{% else -%}
+  {% set bashrc_dir = '/home/' + user -%}
+{% endif -%}
 values:
   pkg:
-    bashrc_path: /home/{{ grains['username'] }}/.bashrc
+    bashrc_path: {{ bashrc_dir }}/.bashrc
+  vimplug:
+    user: {{ user }}
   install:
     github:
       suffix: linux64
-  vimplug:
-    user: {{ grains['username'] }}
 ...
