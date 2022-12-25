@@ -17,4 +17,6 @@ values:
   install:
     github:
       suffix: linux64
+  vimplug:
+    user: {{ grains['username'] }}
 ...
