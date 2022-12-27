@@ -11,7 +11,7 @@
 {% set nvim_current = nvim_basedir + "/current" %}
 {% set nvim_file = nvim.install.github.file %}
 {% set nvim_version = nvim.install.github.version %}
-{% set bashrc_path  = nvim | traverse("pkg:bashrc_path", False) %}
+{% set bashrc_path  = nvim.install.github.bashrc_path %}
 
 neovim_downloaded:
   archive.extracted:
@@ -34,7 +34,7 @@ neovim_installed:
     - source: {{ nvim_current }}
     - require:
       - neovim_current
-{% if bashrc_path != False %}
+{% if bashrc_path is defined %}
 neovim_path:
   file.blockreplace:
     - name: {{ bashrc_path }}

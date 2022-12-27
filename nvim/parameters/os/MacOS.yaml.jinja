@@ -17,4 +17,7 @@
 ---
 values:
   rootgroup: {{ salt['cmd.run']("stat -f '%Sg' /dev/console") }}
+  install:
+    github:
+      suffix: macos
 ...

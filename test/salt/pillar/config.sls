@@ -4,5 +4,3 @@
 nvim:
   config:
     managed: True
-  vimplug:
-    managed: True
