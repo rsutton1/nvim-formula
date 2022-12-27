@@ -5,16 +5,13 @@
 ---
 values:
   install:
+    source: github
     pkg:
       name: neovim
     github:
       install_dir: "/opt/nvim"
       version: 0.7.2
-      source_hash: fa75852890ca4b57551da194c696d3bbd14d9d2e966bc188d1e7e52ee942b71d
+      source_hash:
+        fa75852890ca4b57551da194c696d3bbd14d9d2e966bc188d1e7e52ee942b71d
   rootgroup: root
-  subcomponent:
-    config: '/etc/nvim-subcomponent-formula.conf'
-  # Just here for testing
-  added_in_defaults: defaults_value
-  winner: defaults
 ...

@@ -1,9 +1,14 @@
 # frozen_string_literal: true
 
-control 'nvim.package.install' do
-  title 'The required package should be installed'
+control 'nvim.install' do
+  title 'Check the nvim command is available'
+  describe.one do
+    describe directory('/opt/nvim/current/bin/nvim') do
+      its('mode') { should cmp '0755' }
+    end
 
-  describe directory('/opt/nvim/current/bin/nvim') do
-    its('mode') { should cmp '0755' }
+    describe package('neovim') do
+      it { should be_installed }
+    end
   end
 end

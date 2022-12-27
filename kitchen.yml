@@ -281,26 +281,84 @@ suites:
           base:
             "*":
               - default
+      dependencies:
+        - name: nvim
+          path: test/salt/files/config
+    verifier:
+      inspec_tests:
+        - path: test/integration/default
+  - name: install_github
+    provisioner:
+      state_top:
+        base:
+          '*':
+            - nvim._mapdata
+            - nvim.install
+      pillars:
+        top.sls:
+          base:
+            "*":
+              - install_github
     verifier:
       inspec_tests:
         - path: test/integration/default
       controls:
-        - nvim.package.install
+        - nvim.install
+  - name: install_package
+    provisioner:
+      state_top:
+        base:
+          '*':
+            - nvim._mapdata
+            - nvim.install.package
+      pillars:
+        top.sls:
+          base:
+            "*":
+              - install_package
+    verifier:
+      inspec_tests:
+        - path: test/integration/default
+      controls:
+        - nvim.install
+  - name: config
+    provisioner:
+      state_top:
+        base:
+          '*':
+            - nvim._mapdata
+            - nvim.config
+      pillars:
+        top.sls:
+          base:
+            "*":
+              - config
+      dependencies:
+        - name: nvim
+          path: test/salt/files/config
+    verifier:
+      inspec_tests:
+        - path: test/integration/default
+      controls:
+        - nvim.config.file
   - name: vimplug
     provisioner:
       state_top:
         base:
           '*':
             - nvim._mapdata
-            - nvim
+            - nvim.install.package
+            - nvim.vimplug
       pillars:
         top.sls:
           base:
             "*":
               - vimplug
       dependencies:
-        - name: nvim
+        - name: config
           path: test/salt/files/vimplug
+      pre_salt_command: "mkdir -p /home/kitchen/.config/nvim && mv
+        /tmp/kitchen/srv/salt/config/init.vim ~/.config/nvim/"
     verifier:
       inspec_tests:
         - path: test/integration/default
