@@ -33,6 +33,5 @@ jobs:
           ruby-version: 2.6.10
           # runs 'bundle install' and caches installed gems automatically
           bundler-cache: true
-          working-directory: salt
       - name: Run tests
         run: cd salt && bundle exec kitchen test default-${{ matrix.platform }}-.*-3004
