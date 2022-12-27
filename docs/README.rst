@@ -65,36 +65,41 @@ Available states
 
 *Meta-state (This is a state that includes other states)*.
 
-This installs the nvim package,
-manages the nvim configuration file and then
-starts the associated nvim service.
+This installs the nvim package, manages the nvim configuration file and then
+installs and runs `vimplug <https://github.com/junegunn/vim-plug>`_.
 
-``nvim.package``
+``nvim.install``
 ^^^^^^^^^^^^^^^^
 
-This state will install the nvim package. On Linux, it will also prepend its
-install directory to ``$PATH`` in your .bashrc file. You can set a custom bashrc
-path with the pillar ``nvim:pkg:bashrc_path``.
+This state installs the nvim package.
+
+By default, it installs via the Github Releases page. On Linux, it will also
+prepend its install directory to ``$PATH`` in your .bashrc file. You can set a
+custom bashrc path with the pillar ``nvim:pkg:bashrc_path``.
+
+You can optionally install through your OS package manager instead. See the
+pillar.example file.
 
 ``nvim.config``
 ^^^^^^^^^^^^^^^
 
-This state configures neovim by:
+This state configures neovim by populating the config directory.
 
-1. populating the config directory
-2. installs vim-pack
-3. runs the ``:PlugInstall`` command
+Any files in the ``salt://nvim/files/default/nvim_config_dir/`` directory will
+be used. See the `files_switch
+<https://template-formula.readthedocs.io/en/latest/TOFS_pattern.html>`_ macro
+for more information.
 
-This state uses the
-`files_switch <https://template-formula.readthedocs.io/en/latest/TOFS_pattern.html>`_
-macro with ID ``nvim_config_dir`` to source the config file directory. For
-instance, any files or directories in
-``salt://nvim/files/default/nvim_config_dir/`` will be sourced.
+``nvim.vimplug``
+^^^^^^^^^^^^^^^^
+
+This state runs vimplug's PlugInstall command to install any plugins specified
+in the config file.
 
 ``nvim.config.clean``
 ^^^^^^^^^^^^^^^^^^^^^
 
-This state enforces an empty config directory is used.
+This state wipes the config directory.
 
 Testing
 -------
