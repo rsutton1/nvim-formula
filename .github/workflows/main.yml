@@ -30,7 +30,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: ['ubuntu', 'debian']
+        platform:
+          - debian
+          - ubuntu
+          - centos
+          - fedora
+          - amazonlinux
+          - oraclelinux
+          - arch
+          - gentoo
+          - almalinux
+          - rockylinux
+          - opensuse
     steps:
       - uses: actions/checkout@v3
       - name: Set up Ruby
