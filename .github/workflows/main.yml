@@ -1,0 +1,38 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
+name: Salt
+'on':
+  - pull_request
+
+jobs:
+  salt-lint:
+    runs-on: ubuntu-latest
+    name: Salt Lint
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run salt-lint
+    uses: roaldnefs/salt-lint-action@master
+    env:
+      ACTION_STATE_FIND_PATTERN: '^.*\.(sls|jinja|j2|tmpl|tst)$'
+      ACTION_STATE_FIND_TYPE: 'regex'
+      SALT_LINT_EXTRA_PARAMS: '-v'
+  kitchen-salt:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: ['ubuntu', 'debian']
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+        # change this to (see https://github.com/ruby/setup-ruby#versioning):
+        # uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@2b019609e2b0f1ea1a2bc8ca11cb82ab46ada124
+        with:
+          ruby-version: 2.6.10
+          # runs 'bundle install' and caches installed gems automatically
+          bundler-cache: true
+          working-directory: salt
+      - name: Run tests
+        run: cd salt && bundle exec kitchen test default-${{ matrix.platform }}-.*-3004
