@@ -1,11 +1,20 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 ---
-name: Salt
+name: CI
 'on':
   - pull_request
 
 jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: wagoid/commitlint-github-action@v1
   salt-lint:
     runs-on: ubuntu-latest
     name: Salt Lint
