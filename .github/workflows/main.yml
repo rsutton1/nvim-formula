@@ -34,4 +34,4 @@ jobs:
           # runs 'bundle install' and caches installed gems automatically
           bundler-cache: true
       - name: Run tests
-        run: cd salt && bundle exec kitchen test default-${{ matrix.platform }}-.*-3004
+        run: bundle exec kitchen test default-${{ matrix.platform }}-.*-3004
