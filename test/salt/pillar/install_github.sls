@@ -2,5 +2,5 @@
 # vim: ft=yaml
 ---
 nvim:
-  vimplug:
-    managed: True
+  install:
+    source: github

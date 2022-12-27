@@ -18,11 +18,12 @@
   {% set bashrc_dir = '/home/' + user -%}
 {% endif -%}
 values:
-  pkg:
-    bashrc_path: {{ bashrc_dir }}/.bashrc
+  config:
+    target: {{ bashrc_dir }}/.config/nvim/
   vimplug:
     user: {{ user }}
   install:
     github:
+      bashrc_path: {{ bashrc_dir }}/.bashrc
       suffix: linux64
 ...
