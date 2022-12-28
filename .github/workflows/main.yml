@@ -33,10 +33,9 @@ jobs:
         platform:
           - debian
           - ubuntu
-          - centos
+          - centos-stream8
           - fedora
-          - amazonlinux
-          - oraclelinux
+          - oraclelinux-8
           - arch
           - gentoo
           - almalinux
