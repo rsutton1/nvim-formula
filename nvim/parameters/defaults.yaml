@@ -3,7 +3,19 @@
 #
 # Set default values.
 ---
+{% set kernelrelease = salt.grains.get("kernelrelease", None) %}
+{% if kernelrelease.find("WSL") != -1 %}
+{% set clipboard_type = "win32yank" %}
+{% endif %}
 values:
+  {% if clipboard_type is defined %}
+  kernelrelease: {{ kernelrelease }}
+  clipboard:
+    {{ clipboard_type }}:
+  {% if clipboard_type == "win32yank" %}
+      path: /opt/nvim/current/bin/
+  {% endif %}
+  {% endif %}
   install:
     source: github
     pkg:
